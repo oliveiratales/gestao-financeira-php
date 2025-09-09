@@ -1,0 +1,16 @@
+{
+  "name": "tales/gestao-financeira-php",
+  "require": {
+    "vlucas/phpdotenv": "^5.6",
+    "monolog/monolog": "^3.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Config\\": "config/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  }
+}
