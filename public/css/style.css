@@ -1,11 +1,14 @@
 :root {
-    --primary: #065F46;
-    --secondary: #1E3A8A;
-    --neutral-light: #F9FAFB;
-    --neutral-dark: #111827;
-    --accent: #F97316;
-    --white: #ffffff;
-    --shadow: rgba(0, 0, 0, 0.1);
+    --primary: #1E40AF;
+    --secondary: #10B981;
+    --neutral-light: #F8F9FA;
+    --neutral-medium: #374151;
+    --neutral-dark: #1F2937;
+    --accent-gold: #C9A96E;
+    --accent-coral: #F87171;
+    --accent-violet: #8B5CF6;
+    --white: #FEFEFE;
+    --shadow: rgba(0, 0, 0, 0.06);
 }
 
 * {
@@ -21,20 +24,35 @@ body {
 
 /* Estilos para páginas de autenticação e erro */
 body:not(.dashboard-container) {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: var(--secondary);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+body:not(.dashboard-container)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(0,0,0,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0,0,0,0.08) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .container {
     background: var(--white);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px var(--shadow);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 10px 20px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 400px;
+    position: relative;
+    z-index: 1;
 }
 
 .form-header {
@@ -43,50 +61,99 @@ body:not(.dashboard-container) {
 }
 
 .form-header h1 {
-    color: var(--primary);
+    color: var(--neutral-dark);
     font-size: 2rem;
     margin-bottom: 0.5rem;
 }
 
 .form-header p {
-    color: var(--neutral-dark);
-    opacity: 0.7;
+    color: var(--neutral-medium);
 }
 
 .form-group {
     margin-bottom: 1.5rem;
+    position: relative;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     color: var(--neutral-dark);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .form-group input {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid var(--neutral-light);
+    padding: 12px 15px 12px 45px;
+    border: 1px solid #E5E7EB;
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
-    background: var(--neutral-light);
+    background: var(--white);
+}
+
+.form-group input[type="password"] {
+    padding-right: 45px;
+}
+
+.form-group i {
+    position: absolute;
+    left: 15px;
+    top: 42px;
+    color: var(--neutral-medium);
+    font-size: 1rem;
+}
+
+.form-group i.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 42px;
+    left: auto;
+    color: var(--neutral-medium);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+
+.password-toggle:hover {
+    color: var(--secondary);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--neutral-medium);
+    cursor: pointer;
 }
 
 .form-group input:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.1);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
 }
 
 .btn {
     width: 100%;
-    padding: 12px;
-    background: var(--accent);
+    padding: 14px;
+    background: var(--secondary);
     color: var(--white);
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -98,26 +165,29 @@ body:not(.dashboard-container) {
 }
 
 .btn:hover {
-    background: #ea580c;
+    background: #059669;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
 }
 
 .btn-secondary {
     background: var(--secondary);
+    color: var(--white);
 }
 
 .btn-secondary:hover {
-    background: #1e40af;
+    background: #059669;
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
 }
 
-.btn-accent {
-    background: var(--accent);
+.btn-gold {
+    background: var(--accent-gold);
+    color: var(--white);
 }
 
-.btn-accent:hover {
-    background: #ea580c;
-    box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
+.btn-gold:hover {
+    background: #b8941f;
+    box-shadow: 0 6px 20px rgba(201, 169, 110, 0.3);
 }
 
 .form-footer {
@@ -126,9 +196,9 @@ body:not(.dashboard-container) {
 }
 
 .form-footer a {
-    color: var(--secondary);
+    color: var(--accent-gold);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .form-footer a:hover {
@@ -143,21 +213,21 @@ body:not(.dashboard-container) {
 }
 
 .alert-success {
-    background: #d1fae5;
-    color: var(--primary);
+    background: #ecfdf5;
+    color: var(--secondary);
     border: 1px solid #a7f3d0;
 }
 
 .alert-error {
-    background: #fef3cd;
-    color: var(--accent);
-    border: 1px solid var(--accent);
+    background: #fef2f2;
+    color: var(--accent-coral);
+    border: 1px solid #fca5a5;
 }
 
 .alert-warning {
-    background: #fef3cd;
-    color: var(--accent);
-    border: 1px solid var(--accent);
+    background: #fefce8;
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
 }
 
 /* Dashboard Styles */
@@ -169,13 +239,13 @@ body:not(.dashboard-container) {
 }
 
 .dashboard-header {
-    background: var(--primary);
+    background: var(--secondary);
     color: var(--white);
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 10px var(--shadow);
+    box-shadow: 0 4px 12px var(--shadow);
 }
 
 .user-info {
@@ -196,23 +266,30 @@ body:not(.dashboard-container) {
 }
 
 .welcome-message {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: var(--white);
-    padding: 2rem;
-    border-radius: 15px;
+    background: var(--white);
+    color: var(--neutral-dark);
+    padding: 2.5rem;
+    border-radius: 16px;
     margin-bottom: 2rem;
     text-align: center;
-    box-shadow: 0 5px 15px var(--shadow);
+    box-shadow: 0 8px 25px var(--shadow);
+    border: 1px solid rgba(16, 185, 129, 0.1);
 }
 
 .welcome-message h2 {
     margin-bottom: 1rem;
     font-size: 1.8rem;
+    color: var(--neutral-dark);
 }
 
 .welcome-message p {
     margin-bottom: 0.5rem;
-    opacity: 0.9;
+    color: var(--neutral-medium);
+}
+
+.welcome-message strong {
+    color: var(--accent-gold);
+    font-weight: 700;
 }
 
 /* 404 Error Styles */

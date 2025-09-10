@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Gestão Financeira</title>
+    <title>Dashboard - <?= $_ENV['APP_NAME'] ?? 'FinanceApp' ?></title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v=2">
 </head>
 <body class="dashboard-container">
     <div class="dashboard-header">
-        <h1><i class="fas fa-chart-line"></i> FinanceApp</h1>
+        <h1><i class="fas fa-chart-line"></i> <?= $_ENV['APP_NAME'] ?? 'FinanceApp' ?></h1>
         <div class="user-info">
             <span>Olá, <?= htmlspecialchars($user->getName()) ?>!</span>
             <a href="/logout" class="btn btn-secondary">

@@ -67,6 +67,14 @@ class AuthController
             return;
         }
 
+        // Validar nome completo (nome + sobrenome)
+        $nameParts = array_filter(explode(' ', $name), fn($part) => !empty(trim($part)));
+        if (count($nameParts) < 2) {
+            $error = 'Por favor, informe seu nome completo (nome e sobrenome)';
+            require_once __DIR__ . '/../Views/auth/register.php';
+            return;
+        }
+
         if ($password !== $confirmPassword) {
             $error = 'Senhas não coincidem';
             require_once __DIR__ . '/../Views/auth/register.php';
