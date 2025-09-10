@@ -23,6 +23,7 @@ class AuthService
             return false;
         }
 
+        $this->userRepository->updateLastLogin($user->getId());
         $this->startSession($user);
         return true;
     }
@@ -70,5 +71,6 @@ class AuthService
         $_SESSION['user_id'] = $user->getId();
         $_SESSION['user_email'] = $user->getEmail();
         $_SESSION['user_name'] = $user->getName();
+        $_SESSION['is_first_access'] = $user->isFirstAccess();
     }
 }
