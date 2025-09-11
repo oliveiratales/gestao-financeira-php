@@ -24,7 +24,8 @@ body {
 
 /* Estilos para páginas de autenticação e erro */
 body:not(.dashboard-container) {
-    background: var(--secondary);
+    background: linear-gradient(rgba(16, 185, 129, 0.8), rgba(30, 64, 175, 0.7)), 
+                url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80') center/cover no-repeat;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -39,8 +40,8 @@ body:not(.dashboard-container)::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(0,0,0,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(0,0,0,0.08) 0%, transparent 50%);
+    background: radial-gradient(circle at 30% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(30, 64, 175, 0.08) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -204,13 +205,13 @@ body:not(.dashboard-container)::before {
 }
 
 .btn-gold {
-    background: var(--accent-gold);
+    background: var(--primary);
     color: var(--white);
 }
 
 .btn-gold:hover {
-    background: #b8941f;
-    box-shadow: 0 6px 20px rgba(201, 169, 110, 0.3);
+    background: #1E3A8A;
+    box-shadow: 0 6px 20px rgba(30, 64, 175, 0.3);
 }
 
 .form-footer {
@@ -219,7 +220,7 @@ body:not(.dashboard-container)::before {
 }
 
 .form-footer a {
-    color: var(--accent-gold);
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
 }
@@ -248,9 +249,9 @@ body:not(.dashboard-container)::before {
 }
 
 .alert-warning {
-    background: #fefce8;
-    color: var(--accent-gold);
-    border: 1px solid var(--accent-gold);
+    background: #eff6ff;
+    color: var(--primary);
+    border: 1px solid var(--primary);
 }
 
 /* Dashboard ERP Layout */
@@ -650,7 +651,7 @@ body:not(.dashboard-container)::before {
 }
 
 .welcome-message strong {
-    color: var(--accent-gold);
+    color: var(--primary);
     font-weight: 700;
 }
 
@@ -769,141 +770,6 @@ body:not(.dashboard-container)::before {
     
     .user-dropdown-menu {
         right: -1rem;
-    }
-    
-    .sidebar {
-        width: 280px;
-        transform: translateX(-100%);
-    }
-    
-    .sidebar.show {
-        transform: translateX(0);
-    }
-    
-    .main-content {
-        margin-left: 0;
-        padding: 1rem;
-    }
-}a (max-width: 768px) {
-    .container {
-        margin: 1rem;
-        padding: 1.5rem;
-    }
-    
-    .error-code {
-        font-size: 5rem;
-    }
-    
-    .error-message {
-        font-size: 1.2rem;
-    }
-    
-    .dashboard-header {
-        padding: 1rem;
-    }
-    
-    .header-left h1 {
-        font-size: 1.2rem;
-    }
-    
-    .user-dropdown span {
-        display: none;
-    }
-    
-    .user-dropdown {
-        padding: 0.5rem;
-    }
-    
-    .user-dropdown-menu {
-        right: -1rem;
-    }
-    
-    .sidebar {
-        width: 280px;
-        transform: translateX(-100%);
-    }
-    
-    .sidebar.show {
-        transform: translateX(0);
-    }
-    
-    .main-content {
-        margin-left: 0;
-        padding: 1rem;
-    }
-}a (max-width: 768px) {
-    .container {
-        margin: 1rem;
-        padding: 1.5rem;
-    }
-    
-    .error-code {
-        font-size: 5rem;
-    }
-    
-    .error-message {
-        font-size: 1.2rem;
-    }
-    
-    .dashboard-header {
-        padding: 1rem;
-    }
-    
-    .header-left h1 {
-        font-size: 1.2rem;
-    }
-    
-    .user-info span {
-        display: none;
-    }
-    
-    .user-info .btn {
-        padding: 6px 12px;
-        font-size: 0.8rem;
-    }
-    
-    .sidebar {
-        width: 280px;
-        transform: translateX(-100%);
-    }
-    
-    .sidebar.show {
-        transform: translateX(0);
-    }
-    
-    .main-content {
-        margin-left: 0;
-        padding: 1rem;
-    }
-}a (max-width: 768px) {
-    .container {
-        margin: 1rem;
-        padding: 1.5rem;
-    }
-    
-    .error-code {
-        font-size: 5rem;
-    }
-    
-    .error-message {
-        font-size: 1.2rem;
-    }
-    
-    .dashboard-header {
-        padding: 1rem;
-    }
-    
-    .header-left h1 {
-        font-size: 1.2rem;
-    }
-    
-    .user-info span {
-        display: none;
-    }
-    
-    .user-info .btn {
-        padding: 6px 12px;
-        font-size: 0.8rem;
     }
     
     .sidebar {
