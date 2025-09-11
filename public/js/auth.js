@@ -1,6 +1,36 @@
 // Funcionalidades de Autenticação
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Sistema de loading para botões de formulário
+    function setupFormLoading() {
+        const forms = document.querySelectorAll('form');
+        
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn && !submitBtn.disabled) {
+                    // Salvar conteúdo original
+                    const originalContent = submitBtn.innerHTML;
+                    
+                    // Desabilitar botão e mostrar spinner
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+                    
+                    // Reabilitar após 10 segundos (fallback)
+                    setTimeout(() => {
+                        if (submitBtn.disabled) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalContent;
+                        }
+                    }, 10000);
+                }
+            });
+        });
+    }
+    
+    // Inicializar sistema de loading
+    setupFormLoading();
+    
     // Toggle de visibilidade da senha
     window.togglePasswordVisibility = function(inputId, toggleId) {
         const passwordInput = document.getElementById(inputId);
@@ -35,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Salvar dados se checkbox marcado
-        const loginForm = document.querySelector('form');
+        const loginForm = document.querySelector('form[action="/login"]');
         if (loginForm) {
             loginForm.addEventListener('submit', function() {
                 const rememberCheckbox = document.getElementById('remember');

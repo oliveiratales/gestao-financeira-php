@@ -164,10 +164,33 @@ body:not(.dashboard-container)::before {
     text-align: center;
 }
 
-.btn:hover {
+.btn:hover:not(:disabled) {
     background: #059669;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
+}
+
+.btn:disabled {
+    background: #9CA3AF;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+.btn:disabled:hover {
+    background: #9CA3AF;
+    transform: none;
+    box-shadow: none;
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .btn-secondary {
