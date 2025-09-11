@@ -63,53 +63,6 @@
         </div>
     </div>
 
-    <script>
-        function togglePasswordVisibility(inputId, toggleId) {
-            const passwordInput = document.getElementById(inputId);
-            const toggleIcon = document.getElementById(toggleId);
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                toggleIcon.classList.remove('fa-eye');
-                toggleIcon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                toggleIcon.classList.remove('fa-eye-slash');
-                toggleIcon.classList.add('fa-eye');
-            }
-        }
-
-        // Validação de nome completo
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const nameInput = document.getElementById('name');
-            const name = nameInput.value.trim();
-            
-            // Remover mensagem de erro anterior
-            const existingError = document.getElementById('js-error');
-            if (existingError) {
-                existingError.remove();
-            }
-            
-            // Verificar se tem pelo menos nome e sobrenome
-            const nameParts = name.split(' ').filter(part => part.length > 0);
-            
-            if (nameParts.length < 2) {
-                e.preventDefault();
-                
-                // Criar mensagem de erro no padrão do sistema
-                const errorDiv = document.createElement('div');
-                errorDiv.id = 'js-error';
-                errorDiv.className = 'alert alert-error';
-                errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Por favor, informe seu nome completo (nome e sobrenome).';
-                
-                // Inserir antes do formulário
-                const form = document.querySelector('form');
-                form.parentNode.insertBefore(errorDiv, form);
-                
-                nameInput.focus();
-                return false;
-            }
-        });
-    </script>
+    <script src="/js/auth.js?v=1"></script>
 </body>
 </html>
