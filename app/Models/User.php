@@ -61,6 +61,11 @@ class User
         $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 
+    public function setCreatedAt(\DateTime $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
     public function verifyPassword(string $password): bool
     {
         return password_verify($password, $this->password);
