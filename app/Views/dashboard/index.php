@@ -44,7 +44,8 @@
         <!-- Sidebar -->
         <nav class="sidebar" id="sidebar">
             <div class="sidebar-menu">
-                <div class="menu-section">
+                <div class="sidebar-content">
+                    <div class="menu-section">
                     <div class="menu-section-title">Principal</div>
                     <a href="/dashboard" class="menu-item active">
                         <i class="fas fa-home"></i>
@@ -87,8 +88,14 @@
                         <span>Relatórios Gerais</span>
                     </a>
                 </div>
+                </div>
                 
-
+                <div class="sidebar-footer">
+                    <div class="app-info">
+                        <div class="app-name"><?= $_ENV['APP_NAME'] ?? 'FinanceApp' ?></div>
+                        <div class="app-version">v<?= $_ENV['APP_VERSION'] ?? '1.0.0' ?> • <?= date('Y') ?></div>
+                    </div>
+                </div>
             </div>
         </nav>
 
