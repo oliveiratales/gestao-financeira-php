@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Services\AuthService;
+use App\Core\CSRF;
 
 class AuthController
 {
@@ -26,6 +27,13 @@ class AuthController
 
     public function login(): void
     {
+        $csrfToken = $_POST['csrf_token'] ?? '';
+        if (!CSRF::validateToken($csrfToken)) {
+            $error = 'Token de segurança inválido';
+            require_once __DIR__ . '/../Views/auth/login.php';
+            return;
+        }
+
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $password = $_POST['password'] ?? '';
 
@@ -56,6 +64,13 @@ class AuthController
 
     public function register(): void
     {
+        $csrfToken = $_POST['csrf_token'] ?? '';
+        if (!CSRF::validateToken($csrfToken)) {
+            $error = 'Token de segurança inválido';
+            require_once __DIR__ . '/../Views/auth/register.php';
+            return;
+        }
+
         $name = trim($_POST['name'] ?? '');
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $password = $_POST['password'] ?? '';

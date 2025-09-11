@@ -21,6 +21,8 @@
         <?php endif; ?>
 
         <form method="POST" action="/register">
+            <?php use App\Core\CSRF; echo CSRF::getTokenField(); ?>
+            
             <div class="form-group">
                 <label for="name">Nome Completo</label>
                 <i class="fas fa-user"></i>

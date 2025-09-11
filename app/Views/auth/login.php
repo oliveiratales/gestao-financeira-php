@@ -27,6 +27,8 @@
         <?php endif; ?>
 
         <form method="POST" action="/login">
+            <?php use App\Core\CSRF; echo CSRF::getTokenField(); ?>
+            
             <div class="form-group">
                 <label for="email">Email</label>
                 <i class="fas fa-envelope"></i>
