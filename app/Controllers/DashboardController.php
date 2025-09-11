@@ -3,25 +3,16 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Services\AuthService;
+use App\Middlewares\AuthMiddleware;
 
 class DashboardController
 {
-    private AuthService $authService;
-
-    public function __construct()
-    {
-        $this->authService = new AuthService();
-    }
-
     public function index(): void
     {
-        if (!$this->authService->isAuthenticated()) {
-            header('Location: /login');
-            exit;
-        }
-
-        $user = $this->authService->getCurrentUser();
+        // Middleware já validou autenticação
+        $authMiddleware = new AuthMiddleware();
+        $user = $authMiddleware->getCurrentUser();
+        
         require_once __DIR__ . '/../Views/dashboard/index.php';
     }
 }

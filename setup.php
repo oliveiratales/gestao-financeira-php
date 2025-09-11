@@ -15,7 +15,7 @@ try {
     
     echo "✅ Tabela 'users' criada com sucesso!\n";
     echo "🚀 Sistema pronto para uso!\n";
-    echo "\nAcesse: http://localhost/gestao-financeira-php/public/\n";
+    echo "\nAcesse: http://localhost/\n";
     
 } catch (Exception $e) {
     echo "❌ Erro ao configurar banco: " . $e->getMessage() . "\n";

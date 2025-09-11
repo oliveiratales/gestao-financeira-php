@@ -6,15 +6,26 @@ namespace App\Core;
 class Router
 {
     private array $routes = [];
+    private array $groupMiddleware = [];
 
-    public function get(string $path, callable|array $handler): void
+    public function get(string $path, callable|array $handler, array $middleware = []): void
     {
-        $this->routes['GET'][$path] = $handler;
+        $this->routes['GET'][$path] = ['handler' => $handler, 'middleware' => array_merge($this->groupMiddleware, $middleware)];
     }
 
-    public function post(string $path, callable|array $handler): void
+    public function post(string $path, callable|array $handler, array $middleware = []): void
     {
-        $this->routes['POST'][$path] = $handler;
+        $this->routes['POST'][$path] = ['handler' => $handler, 'middleware' => array_merge($this->groupMiddleware, $middleware)];
+    }
+
+    public function group(array $middleware, callable $callback): void
+    {
+        $previousMiddleware = $this->groupMiddleware;
+        $this->groupMiddleware = array_merge($this->groupMiddleware, $middleware);
+        
+        $callback($this);
+        
+        $this->groupMiddleware = $previousMiddleware;
     }
 
     public function resolve(): void
@@ -31,7 +42,17 @@ class Router
         }
         
         if (isset($this->routes[$method][$path])) {
-            $handler = $this->routes[$method][$path];
+            $route = $this->routes[$method][$path];
+            $handler = $route['handler'];
+            $middleware = $route['middleware'] ?? [];
+            
+            // Executar middlewares
+            foreach ($middleware as $middlewareClass) {
+                $middlewareInstance = new $middlewareClass();
+                if (!$middlewareInstance->handle()) {
+                    return;
+                }
+            }
             
             if (is_array($handler)) {
                 [$controller, $methodName] = $handler;
