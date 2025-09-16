@@ -3,11 +3,6 @@ $title = "Dashboard Financeiro";
 $activePage = 'dashboard';
 ob_start();
 ?>
-<div class="dashboard-header-content">
-    <h1>Dashboard Financeiro</h1>
-    <p>Bem-vindo, <strong><?= htmlspecialchars(explode(' ', $user->getName())[0]) ?></strong>! Aqui está o resumo das
-        suas finanças.</p>
-</div>
 
 <!-- Cards de Resumo -->
 <div class="stats-grid">

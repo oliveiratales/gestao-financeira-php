@@ -30,6 +30,7 @@
             <div class="user-dropdown-menu" id="userDropdownMenu">
                 <a href="#" class="dropdown-item"><i class="fas fa-user"></i> Perfil</a>
                 <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Preferências</a>
+                <a href="#" class="dropdown-item"><i class="fas fa-bell"></i> Notificações</a>
                 <a href="/logout" class="dropdown-item logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
             </div>
         </div>
@@ -39,51 +40,65 @@
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-menu">
             <div class="sidebar-content">
+                <!-- Principal -->
                 <div class="menu-section">
                     <div class="menu-section-title">Principal</div>
-                    <a href="/dashboard" class="menu-item active">
+                    <a href="/dashboard" class="menu-item <?= ($activePage ?? '') === 'dashboard' ? 'active' : '' ?>">
                         <i class="fas fa-home"></i>
                         <span>Dashboard</span>
                     </a>
                 </div>
 
+                <!-- Financeiro -->
                 <div class="menu-section">
                     <div class="menu-section-title">Financeiro</div>
-                    <a href="#" class="menu-item">
-                        <i class="fas fa-wallet"></i>
-                        <span>Contas</span>
+                    <a href="/entradas" class="menu-item <?= ($activePage ?? '') === 'entradas' ? 'active' : '' ?>">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>Entradas</span>
                     </a>
-                    <a href="#" class="menu-item">
-                        <i class="fas fa-exchange-alt"></i>
-                        <span>Transações</span>
+                    <a href="/saidas" class="menu-item <?= ($activePage ?? '') === 'saidas' ? 'active' : '' ?>">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>Saídas</span>
                     </a>
-                    <a href="#" class="menu-item">
-                        <i class="fas fa-chart-pie"></i>
+                    <a href="/categorias" class="menu-item <?= ($activePage ?? '') === 'categorias' ? 'active' : '' ?>">
+                        <i class="fas fa-tags"></i>
                         <span>Categorias</span>
                     </a>
-                    <a href="#" class="menu-item">
+                    <a href="/metas" class="menu-item <?= ($activePage ?? '') === 'metas' ? 'active' : '' ?>">
+                        <i class="fas fa-bullseye"></i>
+                        <span>Metas</span>
+                    </a>
+                    <a href="/dividas" class="menu-item <?= ($activePage ?? '') === 'dividas' ? 'active' : '' ?>">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Dívidas</span>
+                    </a>
+                    <a href="/orcamento-mensal"
+                        class="menu-item <?= ($activePage ?? '') === 'orcamento-mensal' ? 'active' : '' ?>">
                         <i class="fas fa-file-invoice-dollar"></i>
-                        <span>Orçamentos</span>
+                        <span>Orçamento Mensal</span>
+                    </a>
+                    <a href="/investimentos"
+                        class="menu-item <?= ($activePage ?? '') === 'investimentos' ? 'active' : '' ?>">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Investimentos</span>
+                    </a>
+                    <a href="/limites" class="menu-item <?= ($activePage ?? '') === 'limites' ? 'active' : '' ?>">
+                        <i class="fas fa-sliders-h"></i>
+                        <span>Limites</span>
                     </a>
                 </div>
 
+                <!-- Relatórios -->
                 <div class="menu-section">
                     <div class="menu-section-title">Relatórios</div>
-                    <a href="#" class="menu-item">
-                        <i class="fas fa-chart-bar"></i>
-                        <span>Fluxo de Caixa</span>
-                    </a>
-                    <a href="#" class="menu-item">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Evolução Patrimonial</span>
-                    </a>
-                    <a href="#" class="menu-item">
+                    <a href="/relatorios" class="menu-item <?= ($activePage ?? '') === 'relatorios' ? 'active' : '' ?>">
                         <i class="fas fa-file-alt"></i>
-                        <span>Relatórios Gerais</span>
+                        <span>Relatórios</span>
                     </a>
                 </div>
             </div>
 
+            <!-- Footer da sidebar -->
             <div class="sidebar-footer">
                 <div class="app-info">
                     <div class="app-name"><?= $_ENV['APP_NAME'] ?? 'FinanceApp' ?></div>
