@@ -6,47 +6,36 @@ ob_start();
 
 <!-- Cards de Resumo -->
 <div class="stats-grid">
-    <div class="stat-card balance">
-        <div class="stat-icon">
-            <i class="fas fa-wallet"></i>
-        </div>
-        <div class="stat-content">
-            <h3>Saldo Atual</h3>
-            <p class="stat-value">R$ 12.450,00</p>
-            <span class="stat-change positive">+5.2% este mês</span>
-        </div>
-    </div>
-
     <div class="stat-card income">
-        <div class="stat-icon">
-            <i class="fas fa-arrow-up"></i>
-        </div>
+        <div class="stat-icon"><i class="fas fa-arrow-down"></i></div>
         <div class="stat-content">
-            <h3>Receitas</h3>
+            <h3>Entradas</h3>
             <p class="stat-value">R$ 8.200,00</p>
             <span class="stat-change positive">+12.3% este mês</span>
         </div>
     </div>
-
     <div class="stat-card expense">
-        <div class="stat-icon">
-            <i class="fas fa-arrow-down"></i>
-        </div>
+        <div class="stat-icon"><i class="fas fa-arrow-up"></i></div>
         <div class="stat-content">
-            <h3>Despesas</h3>
+            <h3>Saídas</h3>
             <p class="stat-value">R$ 5.750,00</p>
             <span class="stat-change negative">+8.1% este mês</span>
         </div>
     </div>
-
-    <div class="stat-card savings">
-        <div class="stat-icon">
-            <i class="fas fa-piggy-bank"></i>
-        </div>
+    <div class="stat-card goals">
+        <div class="stat-icon"><i class="fas fa-bullseye"></i></div>
         <div class="stat-content">
-            <h3>Economia</h3>
-            <p class="stat-value">R$ 2.450,00</p>
-            <span class="stat-change positive">+18.5% este mês</span>
+            <h3>Metas</h3>
+            <p class="stat-value">75%</p>
+            <span class="stat-change positive">+10% em relação ao mês anterior</span>
+        </div>
+    </div>
+    <div class="stat-card investments">
+        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="stat-content">
+            <h3>Investimentos</h3>
+            <p class="stat-value">R$ 12.000,00</p>
+            <span class="stat-change positive">+5% este mês</span>
         </div>
     </div>
 </div>
@@ -70,13 +59,11 @@ ob_start();
     <div class="dashboard-card transactions-card">
         <div class="card-header">
             <h3>Últimas Transações</h3>
-            <a href="#" class="btn-link">Ver todas</a>
+            <a href="/entradas" class="btn-link">Ver todas</a>
         </div>
         <div class="transactions-list">
             <div class="transaction-item">
-                <div class="transaction-icon income">
-                    <i class="fas fa-plus"></i>
-                </div>
+                <div class="transaction-icon income"><i class="fas fa-arrow-down"></i></div>
                 <div class="transaction-details">
                     <span class="transaction-title">Salário</span>
                     <span class="transaction-date">Hoje</span>
@@ -84,9 +71,7 @@ ob_start();
                 <span class="transaction-amount positive">+R$ 5.000,00</span>
             </div>
             <div class="transaction-item">
-                <div class="transaction-icon expense">
-                    <i class="fas fa-minus"></i>
-                </div>
+                <div class="transaction-icon expense"><i class="fas fa-arrow-up"></i></div>
                 <div class="transaction-details">
                     <span class="transaction-title">Supermercado</span>
                     <span class="transaction-date">Ontem</span>
@@ -94,9 +79,7 @@ ob_start();
                 <span class="transaction-amount negative">-R$ 280,50</span>
             </div>
             <div class="transaction-item">
-                <div class="transaction-icon expense">
-                    <i class="fas fa-minus"></i>
-                </div>
+                <div class="transaction-icon expense"><i class="fas fa-arrow-up"></i></div>
                 <div class="transaction-details">
                     <span class="transaction-title">Conta de Luz</span>
                     <span class="transaction-date">2 dias atrás</span>
@@ -104,9 +87,7 @@ ob_start();
                 <span class="transaction-amount negative">-R$ 150,00</span>
             </div>
             <div class="transaction-item">
-                <div class="transaction-icon income">
-                    <i class="fas fa-plus"></i>
-                </div>
+                <div class="transaction-icon income"><i class="fas fa-arrow-down"></i></div>
                 <div class="transaction-details">
                     <span class="transaction-title">Freelance</span>
                     <span class="transaction-date">3 dias atrás</span>
@@ -164,11 +145,11 @@ ob_start();
         </div>
     </div>
 
-    <!-- Contas a Pagar -->
+    <!-- Dívidas e Orçamento Mensal -->
     <div class="dashboard-card bills-card">
         <div class="card-header">
-            <h3>Contas a Pagar</h3>
-            <a href="#" class="btn-link">Gerenciar</a>
+            <h3>Dívidas / Orçamento Mensal</h3>
+            <a href="/dividas" class="btn-link">Gerenciar</a>
         </div>
         <div class="bills-list">
             <div class="bill-item urgent">
@@ -208,14 +189,14 @@ if(ctx){
         data: {
             labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
             datasets: [{
-                label: 'Receitas',
+                label: 'Entradas',
                 data: [6500, 7200, 6800, 8200, 7500, 8200],
                 borderColor: '#10B981',
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 tension: 0.4,
                 fill: true
-            }, {
-                label: 'Despesas',
+            },{
+                label: 'Saídas',
                 data: [4200, 4800, 5100, 4900, 5200, 5750],
                 borderColor: '#F87171',
                 backgroundColor: 'rgba(248, 113, 113, 0.1)',
@@ -227,9 +208,7 @@ if(ctx){
             responsive: true,
             maintainAspectRatio: false,
             plugins: { legend: { position: 'top' } },
-            scales: {
-                y: { beginAtZero: true, ticks: { callback: v => 'R$ ' + v.toLocaleString('pt-BR') } }
-            }
+            scales: { y: { beginAtZero: true, ticks: { callback: v => 'R$ ' + v.toLocaleString('pt-BR') } } }
         }
     });
 }

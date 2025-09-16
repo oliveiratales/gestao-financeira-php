@@ -681,8 +681,8 @@ body:not(.dashboard-container)::before {
 }
 
 .stat-icon {
-    width: 60px;
-    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -691,20 +691,20 @@ body:not(.dashboard-container)::before {
     color: var(--white);
 }
 
-.stat-card.balance .stat-icon {
-    background: var(--secondary);
-}
-
 .stat-card.income .stat-icon {
-    background: var(--primary);
+    background: var(--secondary);
 }
 
 .stat-card.expense .stat-icon {
     background: var(--accent-coral);
 }
 
-.stat-card.savings .stat-icon {
+.stat-card.goals .stat-icon {
     background: var(--accent-violet);
+}
+
+.stat-card.investments .stat-icon {
+    background: var(--primary);
 }
 
 .stat-content h3 {
